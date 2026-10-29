@@ -9,6 +9,7 @@ namespace NLtoSQL
 		public string DateColumn { get; set; } = "";
 		public List<string> Select { get; set; } = new();
 		public List<string> Sum { get; set; } = new();
+
 	}
 
 	internal class Mapping
@@ -16,6 +17,8 @@ namespace NLtoSQL
 		public string Table { get; set; } = "";
 		public Dictionary<string, ColumnDef> Columns { get; set; } = new();
 		public Dictionary<string, ReportDef> Reports { get; set; } = new();
+		public List<string> ValueColumns { get; set; } = new();
+
 	}
 
 	internal static class MappingLoader

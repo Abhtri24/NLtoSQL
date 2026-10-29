@@ -1,4 +1,6 @@
 {
+  
+
   "reports": {
     "Soa": [ "soa", "statement of account", "account statement" ],
     "Bordereau": [ "bordereau", "bordereaux", "bdx" ],
@@ -7,7 +9,19 @@
   },
   "columns": {
     "GrossPremium": [ "premium", "gross premium" ],
-    "NetPremium": [ "net premium" ]
+    "NetPremium": [ "net premium" ],
+    "TreatyName": [
+      "treaty",
+      "treaty name"
+    ],
+    "TransType": [
+      "transaction type",
+      "trans type"
+    ],
+    "CLAIMTYPE": [
+      "claim type",
+      "claim category"
+    ]
   },
   "operators": {
     ">": [ "above", "greater than", "more than", ">" ],
@@ -16,6 +30,8 @@
     "<=": [ "at most", "<=" ]
   },
   "stopwords": [
+    "generate",
+    "is",
     "give",
     "me",
     "a",
@@ -30,6 +46,7 @@
     "with",
     "where",
     "and",
-    "get"
+    "get",
+    "under"
   ]
 }

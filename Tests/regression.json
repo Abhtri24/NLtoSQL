@@ -1,0 +1,91 @@
+[
+  {
+    "name": "SOA for one reinsurer",
+    "input": "soa for RGA last month",
+    "expectedReport": "Soa",
+    "expectedFilters": [
+      "[ReinsurerID] =",
+      "[TRDATE] >="
+    ],
+    "expectedParameters": {
+      "RGA": true
+    },
+    "shouldSucceed": true
+  },
+  {
+    "name": "SOA for multiple reinsurers",
+    "input": "show me the statement of account for RGA and Swiss Re last month",
+    "expectedReport": "Soa",
+    "expectedFilters": [
+      "[ReinsurerID] IN",
+      "[TRDATE] >="
+    ],
+    "expectedParameters": {
+      "RGA": true,
+      "Swiss Re": true
+    },
+    "shouldSucceed": true
+  },
+  {
+    "name": "Bordereau for Munich Re",
+    "input": "generate a bordereau for Munich Re",
+    "expectedReport": "Bordereau",
+    "expectedFilters": [
+      "[ReinsurerID] ="
+    ],
+    "expectedParameters": {
+      "Munich Re": true
+    },
+    "shouldSucceed": true
+  },
+  {
+    "name": "Premium threshold",
+    "input": "give me an SOA where gross premium is above 3000",
+    "expectedReport": "Soa",
+    "expectedFilters": [
+      "[Amount] >"
+    ],
+    "expectedParameters": {
+      "3000": true
+    },
+    "shouldSucceed": true
+  },
+  {
+    "name": "Missing report",
+    "input": "show me RGA transactions last month",
+    "shouldSucceed": false
+  },
+  {
+    "name": "Unknown value",
+    "input": "soa for Unknown Re",
+    "shouldSucceed": false
+  },
+  {
+    "name": "SOA filtered by transaction type",
+    "input": "SOA for RGA and NB",
+    "expectedReport": "Soa",
+    "expectedFilters": [
+      "[ReinsurerID] =",
+      "[TransType] ="
+    ],
+    "expectedParameters": {
+      "RGA": true,
+      "NB": true
+    },
+    "shouldSucceed": true
+  },
+  {
+    "name": "Bordereau filtered by treaty",
+    "input": "bordereau for Munich Re under treaty ABC",
+    "expectedReport": "Bordereau",
+    "expectedFilters": [
+      "[ReinsurerID] =",
+      "[TreatyName] ="
+    ],
+    "expectedParameters": {
+      "Munich Re": true,
+      "ABC": true
+    },
+    "shouldSucceed": true
+  }
+]

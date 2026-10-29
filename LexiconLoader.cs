@@ -14,7 +14,7 @@ namespace NLtoSQL
 
 		private static readonly JsonSerializerOptions Options = new() { PropertyNameCaseInsensitive = true };
 
-		public static Lexicon Load(string path)
+		public static Lexicon Load(string path ,IEnumerable<DatabaseValue>? values = null)
 		{
 			var file = JsonSerializer.Deserialize<LexiconFile>(File.ReadAllText(path), Options)
 				?? throw new InvalidOperationException($"{path} is empty or invalid.");
@@ -23,6 +23,36 @@ namespace NLtoSQL
 			AddGroup(entries, file.Reports, Kind.Report);
 			AddGroup(entries, file.Columns, Kind.Column);
 			AddGroup(entries, file.Operators, Kind.Op);
+
+			foreach (var value in values ?? Enumerable.Empty<DatabaseValue>())
+			{
+				var key = string.Join(
+					" ",
+					Tokenizer.Tokenize(value.Value));
+
+				if (key.Length == 0)
+					continue;
+
+				if (!entries.TryGetValue(key, out var terms))
+					entries[key] = terms = new List<Term>();
+
+				if (!terms.Any(t =>
+						t.Kind == Kind.Value &&
+						string.Equals(
+							t.Column,
+							value.Column,
+							StringComparison.OrdinalIgnoreCase) &&
+						string.Equals(
+							t.Canonical,
+							value.Value,
+							StringComparison.OrdinalIgnoreCase)))
+				{
+					terms.Add(new Term(
+						value.Value,
+						Kind.Value,
+						value.Column));
+				}
+			}
 
 			if (entries.Count == 0)
 				throw new InvalidOperationException("The lexicon has no words.");

@@ -1,23 +1,61 @@
 {
+  "valueColumns": [
+    "ReinsurerID",
+    "TreatyName",
+    "TransType",
+    "CLAIMTYPE"
+  ],
   "table": "FNF_Cleaned",
   "columns": {
-    "GrossPremium": { "sql": "Amount" },
-    "NetPremium": { "sql": "NetPremiumPaid" }
+    "GrossPremium": {
+      "sql": "Amount"
+    },
+    "NetPremium": {
+      "sql": "NetPremiumPaid"
+    },
+    "TreatyName": {
+      "sql": "TreatyName"
+    },
+    "TransType": {
+      "sql": "TransType"
+    },
+    "CLAIMTYPE": {
+      "sql": "CLAIMTYPE"
+    }
   },
   "reports": {
     "Soa": {
       "dateColumn": "TRDATE",
-      "select": [ "ReinsurerID", "TransType" ],
-      "sum": [ "GrossPremium" ]
+      "select": [
+        "ReinsurerID",
+        "TransType"
+      ],
+      "sum": [
+        "GrossPremium"
+      ]
     },
     "Bordereau": {
       "dateColumn": "TRDATE",
-      "select": [ "PolicyNumber", "ReinsurerID", "TreatyName", "SumCeded", "Amount", "CalcFrom", "CalcTo" ],
+      "select": [
+        "PolicyNumber",
+        "ReinsurerID",
+        "TreatyName",
+        "SumCeded",
+        "Amount",
+        "CalcFrom",
+        "CalcTo"
+      ],
       "sum": []
     },
     "Claims": {
       "dateColumn": "Claimdate",
-      "select": [ "PolicyNumber", "ReinsurerID", "CLAIMTYPE", "ClaimAmountInsurer", "Claimdate" ],
+      "select": [
+        "PolicyNumber",
+        "ReinsurerID",
+        "CLAIMTYPE",
+        "ClaimAmountInsurer",
+        "Claimdate"
+      ],
       "sum": []
     }
   }
