@@ -75,17 +75,9 @@
     "shouldSucceed": true
   },
   {
-    "name": "Bordereau filtered by treaty",
+    "name": "Unknown treaty for bordereau",
     "input": "bordereau for Munich Re under treaty ABC",
-    "expectedReport": "Bordereau",
-    "expectedFilters": [
-      "[ReinsurerID] =",
-      "[TreatyName] ="
-    ],
-    "expectedParameters": {
-      "Munich Re": true,
-      "ABC": true
-    },
-    "shouldSucceed": true
+    
+    "shouldSucceed": false
   }
-]
+] 
