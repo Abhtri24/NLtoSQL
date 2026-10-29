@@ -1,0 +1,24 @@
+{
+  "table": "FNF_Cleaned",
+  "columns": {
+    "GrossPremium": { "sql": "Amount" },
+    "NetPremium": { "sql": "NetPremiumPaid" }
+  },
+  "reports": {
+    "Soa": {
+      "dateColumn": "TRDATE",
+      "select": [ "ReinsurerID", "TransType" ],
+      "sum": [ "GrossPremium" ]
+    },
+    "Bordereau": {
+      "dateColumn": "TRDATE",
+      "select": [ "PolicyNumber", "ReinsurerID", "TreatyName", "SumCeded", "Amount", "CalcFrom", "CalcTo" ],
+      "sum": []
+    },
+    "Claims": {
+      "dateColumn": "Claimdate",
+      "select": [ "PolicyNumber", "ReinsurerID", "CLAIMTYPE", "ClaimAmountInsurer", "Claimdate" ],
+      "sum": []
+    }
+  }
+}

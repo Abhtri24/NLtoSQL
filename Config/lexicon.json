@@ -1,0 +1,35 @@
+{
+  "reports": {
+    "Soa": [ "soa", "statement of account", "account statement" ],
+    "Bordereau": [ "bordereau", "bordereaux", "bdx" ],
+    "Claims": [ "claims", "claim" ]
+
+  },
+  "columns": {
+    "GrossPremium": [ "premium", "gross premium" ],
+    "NetPremium": [ "net premium" ]
+  },
+  "operators": {
+    ">": [ "above", "greater than", "more than", ">" ],
+    ">=": [ "at least", ">=" ],
+    "<": [ "below", "under", "less than", "<" ],
+    "<=": [ "at most", "<=" ]
+  },
+  "stopwords": [
+    "give",
+    "me",
+    "a",
+    "an",
+    "the",
+    "please",
+    "for",
+    "in",
+    "of",
+    "from",
+    "show",
+    "with",
+    "where",
+    "and",
+    "get"
+  ]
+}

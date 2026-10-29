@@ -1,0 +1,39 @@
+{
+  "table": "FNF_Cleaned",
+  "dateColumn": "TRDATE",
+  "entries": [
+    {
+      "id": "soa",
+      "kind": "report",
+      "words": [ "soa", "statement of account" ],
+      "groupBy": [ "ReinsurerID", "TransType" ],
+      "measures": [ "gross_premium", "sum_ceded" ]
+    },
+    {
+      "id": "gross_premium",
+      "kind": "measure",
+      "words": [ "gross premium" ],
+      "sql": "SUM(Amount)"
+    },
+    {
+      "id": "sum_ceded",
+      "kind": "measure",
+      "words": [ "sum ceded" ],
+      "sql": "SUM(SumCeded)"
+    },
+    {
+      "id": "reinsurer",
+      "kind": "column",
+      "words": [ "reinsurer" ],
+      "column": "ReinsurerID"
+    },
+    {
+      "id": "new_business",
+      "kind": "filter",
+      "words": [ "new business", "nb" ],
+      "column": "TransType",
+      "op": "=",
+      "value": "NB"
+    }
+  ]
+}
